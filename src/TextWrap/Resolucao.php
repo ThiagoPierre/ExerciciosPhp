@@ -52,7 +52,7 @@ class Resolucao implements TextWrapInterface {
         }
       }
     }
-    // Após atingir a array com as palavras da string 
+    // Após atingir a array com as palavras da string
     // inicial respeitando o limite, começa a verificação
     // se duas ou mais palavras menores que o limite cabem
     // na mesma posição.
@@ -64,7 +64,7 @@ class Resolucao implements TextWrapInterface {
         $save_word = trim($save_word . " " . $result[$i]);
         $lengthcounter++;
       }
-      // Caso não se encaixem na mesma posição, 
+      // Caso não se encaixem na mesma posição,
       // adicionam-as à array separadamente.
       else {
         array_push($final_result, trim($save_word));
