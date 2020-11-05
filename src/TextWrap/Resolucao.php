@@ -27,10 +27,10 @@ class Resolucao implements TextWrapInterface
         for ($i = 0; $i < sizeof($result); $i++) {
             $lengthcounter += mb_strlen($result[$i]);
             if ($lengthcounter <= $length) {
-                $save_word .= $result[$i] . " ";
+                $save_word = trim($save_word . " " . $result[$i]);
                 $lengthcounter++;
             } else {
-                array_push($final_result, $save_word);
+                array_push($final_result, trim($save_word));
                 $i--;
                 $lengthcounter = 0;
                 $save_word = "";
