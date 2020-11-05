@@ -3,8 +3,7 @@
 namespace Galoa\ExerciciosPhp\TextWrap;
 
 /**
- * Resolução class Doc Comment
- * Resolução do teste aplicado pela empresa Galoá.
+ * Resolução class Doc Comment, teste aplicado pela empresa Galoá.
  *
  * @category Class
  * @package TextWrap
@@ -17,21 +16,22 @@ class Resolucao implements TextWrapInterface {
   /**
    * Paramêtros da função.
    *
-   * @param $text
+   * @param string $text
    *   Frase ou texto a ser analisado
-   * @param $length
+   * @param int $length
    *   Limite de caracteres por linha
    *
    * @return array
+   *   Retorna uma array com o texto separado por limite de caracteres.
    */
   public function textWrap(string $text, int $length): array {
     $pedaco = explode(" ", $text);
-    $result = array();
-    $final_result = array();
+    $result = [];
+    $final_result = [];
     $lengthcounter = 0;
     $save_word = "";
     $w = 0;
-    for ($x = 0; $x < sizeof($pedaco); $x++) {
+    for ($x = 0; $x < count($pedaco); $x++) {
       if ($w + mb_strlen($pedaco[$x]) <= $length) {
         array_push($result, $pedaco[$x]);
         $w += mb_strlen($pedaco[$x]);
@@ -45,7 +45,7 @@ class Resolucao implements TextWrapInterface {
         }
       }
     }
-    for ($i = 0; $i < sizeof($result); $i++) {
+    for ($i = 0; $i < count($result); $i++) {
       $lengthcounter += mb_strlen($result[$i]);
       if ($lengthcounter <= $length) {
         $save_word = trim($save_word . " " . $result[$i]);
