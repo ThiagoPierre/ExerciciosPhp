@@ -1,39 +1,46 @@
 <?php
 
 namespace Galoa\ExerciciosPhp\TextWrap;
-
-/**
- * Define uma interface para o exercício de quebra de linha.
- */
 interface TextWrapInterface {
-
-  /**
-   * Quebra uma string em diversas strings com tamanho passado por parâmetro.
-   *
-   * Suponha que você tenha uma string com um texto bastante longo. Você quer
-   * imprimir na tela todo o texto, mas garantir um limite máximo de N
-   * caracteres por linha.
-   *
-   * Alguns pontos que você deve ter em mente:
-   * - Retorne o todo o texto, com o máximo de palavras por linha, mas sem
-   *   nunca extrapolar o limite de caracteres.
-   * - Se uma palavra não couber na linha e o comprimento dela for menor que o
-   *   limite de caracteres, ela não deve ser cortada, e sim jogada para a
-   *   próxima linha.
-   * - Se a palavra for maior que o limite de caracteres por linha, corte a
-   *   palavra e continue a imprimi-la na linha seguinte.
-   * - Não utilize funções prontas, como p.ex. o wordwrap do PHP. O objetivo
-   *   deste exercício é que você desenvolva o algoritmo indicado.
-   *
-   * @param string $text
-   *   O texto que será utilizado como entrada.
-   * @param int $length
-   *   Em quantos caracteres a linha deverá ser quebrada.
-   *
-   * @return array
-   *   Um array de strings equivalente ao texto recebido por parâmetro porém
-   *   respeitando o comprimento de linha e as regras especificadas acima.
-   */
-  public function textWrap(string $text, int $length): array;
-
+    public function textWrap(string $text, int $length):array;
 }
+
+function textWrap(string $text, int $length){
+$pedaco = explode(" ", $text);
+$result = array();
+$w = 0;
+$final_result = array();
+$c = 0;
+$a = "";
+    for ($x=0; $x<sizeof($pedaco); $x++){
+        if ($w + strlen($pedaco[$x]) <= $length){
+            array_push($result, $pedaco[$x]);
+            $w +=  strlen($pedaco[$x]);
+        } else {
+            $width = strlen($pedaco[$x])/$length;
+            $count = 0;
+            while ($count<$width){
+                array_push($result, substr($pedaco[$x], $length*$count,$length));
+                $count++;
+            }
+        }
+    }
+    for($i = 0; $i < sizeof($result) ; $i++){
+        $c += strlen($result[$i]) ;
+        if($c <= $length){
+            $a .= $result[$i] . " ";
+            $c ++;
+        } else {
+            array_push($final_result,$a);
+            $i--;
+            $c = 0;
+            $a = "";
+        }
+    } 
+    array_push($final_result,$a);
+return $final_result;
+}
+
+print_r(textWrap("Eu gosto muito de brigadeiros!",8))
+
+?>
