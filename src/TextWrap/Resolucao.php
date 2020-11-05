@@ -32,6 +32,8 @@ class Resolucao implements TextWrapInterface {
     $save_word = "";
     $w = 0;
     for ($x = 0; $x < count($pedaco); $x++) {
+      // Ao criar um for para ciclar por toda a array, agora é necessário estabelecer o primeiro parâmetro.
+      // Aqui, teremos os casos em que a palavra [$x] cabe no limite, ou é necessário cortá-la.
       if ($w + mb_strlen($pedaco[$x]) <= $length) {
         array_push($result, $pedaco[$x]);
         $w += mb_strlen($pedaco[$x]);
