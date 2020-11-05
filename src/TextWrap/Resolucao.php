@@ -30,7 +30,7 @@ class Resolucao implements TextWrapInterface
             if ($c <= $length) {
                 $a .= $result[$i] . " ";
                 $c++;
-            } else {
+            }  else {
                 array_push($final_result, $a);
                 $i--;
                 $c = 0;
