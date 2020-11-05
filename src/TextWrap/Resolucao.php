@@ -3,13 +3,7 @@
 namespace Galoa\ExerciciosPhp\TextWrap;
 
 /**
- * Resolução class Doc Comment, teste aplicado pela empresa Galoá.
- *
- * @category Class
- * @package TextWrap
- * @author Thiago Pierre <thiago.barboza.p@gmail.com>
- * @license Dont Have One
- * @link https://github.com/ThiagoPierre/ExerciciosPhp
+ * Resolução do teste aplicado pela empresa Galoá.
  */
 class Resolucao implements TextWrapInterface {
 
