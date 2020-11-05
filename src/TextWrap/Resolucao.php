@@ -15,53 +15,43 @@ namespace Galoa\ExerciciosPhp\TextWrap;
  * Boa sorte :D
  */
 class Resolucao implements TextWrapInterface {
-
-  /**
-   * {@inheritdoc}
-   *
-   * Apague o conteúdo do método abaixo e escreva sua própria implementação,
-   * nós colocamos esse mock para poder rodar a análise de cobertura dos
-   * testes unitários.
-   */
-  public function textWrap(string $text, int $length): array {
-    if ($length === 8) {
-      return [
-        'Se vi',
-        'mais',
-        'longe',
-        'foi por',
-        'estar de',
-        'pé sobre',
-        'ombros',
-        'de',
-        'gigantes',
-      ];
-    }
-    elseif ($length === 12) {
-      return [
-        'Se vi mais',
-        'longe foi',
-        'por estar de',
-        'pé sobre',
-        'ombros de',
-        'gigantes',
-      ];
-    }
-    elseif ($length === 10) {
-      // Por favor, não implemente o código desse jeito, isso é só um mock.
-      $ret = [
-        'Se vi mais',
-        'longe foi',
-        'por estar',
-        'de pé',
-        'sobre',
-      ];
-      $ret[] = 'ombros de';
-      $ret[] = 'gigantes';
-      return $ret;
-    }
-
-    return [""];
-  }
-
+interface TextWrapInterface {
+    public function textWrap(string $text, int $length):array;
 }
+
+function textWrap(string $text, int $length){
+$pedaco = explode(" ", $text);
+$result = array();
+$w = 0;
+$final_result = array();
+$c = 0;
+$a = "";
+    for ($x=0; $x<sizeof($pedaco); $x++){
+        if ($w + strlen($pedaco[$x]) <= $length){
+            array_push($result, $pedaco[$x]);
+            $w +=  strlen($pedaco[$x]);
+        } else {
+            $width = strlen($pedaco[$x])/$length;
+            $count = 0;
+            while ($count<$width){
+                array_push($result, substr($pedaco[$x], $length*$count,$length));
+                $count++;
+            }
+        }
+    }
+    for($i = 0; $i < sizeof($result) ; $i++){
+        $c += strlen($result[$i]) ;
+        if($c <= $length){
+            $a .= $result[$i] . " ";
+            $c ++;
+        } else {
+            array_push($final_result,$a);
+            $i--;
+            $c = 0;
+            $a = "";
+        }
+    } 
+    array_push($final_result,$a);
+return $final_result;
+}
+?>
