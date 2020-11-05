@@ -53,7 +53,7 @@ class Resolucao implements TextWrapInterface {
     for ($i = 0; $i < count($result); $i++) {
       $lengthcounter += mb_strlen($result[$i]);
       // Caso as palavras menores que o limite,
-      // ao se concatenarem adicionando um espaço, 
+      // ao se concatenarem adicionando um espaço,
       // continuem menores que o limite, são colocadas
       // na mesma posição.
       if ($lengthcounter <= $length) {
