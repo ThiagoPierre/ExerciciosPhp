@@ -40,7 +40,4 @@ $a = "";
     array_push($final_result,$a);
 return $final_result;
 }
-
-print_r(textWrap("Eu gosto muito de brigadeiros!",8))
-
 ?>
