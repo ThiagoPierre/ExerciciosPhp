@@ -17,9 +17,9 @@ class Resolucao implements TextWrapInterface {
    * Paramêtros da função.
    *
    * @param string $text
-   *   Frase ou texto a ser analisado
+   *   Frase ou texto a ser analisado.
    * @param int $length
-   *   Limite de caracteres por linha
+   *   Limite de caracteres por linha.
    *
    * @return array
    *   Retorna uma array com o texto separado por limite de caracteres.
