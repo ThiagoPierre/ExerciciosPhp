@@ -29,7 +29,7 @@ class Resolucao implements TextWrapInterface {
       // Ao criar um for para ciclar por toda a array,
       // agora é necessário estabelecer o primeiro parâmetro.
       // Aqui, teremos os casos em que a palavra [$x] cabe no limite,
-      // Ou não cabe e é necessário cortá-la.
+      // Ou que não cabe, e então é necessário cortá-la.
       if ($w + mb_strlen($pedaco[$x]) <= $length) {
         array_push($result, $pedaco[$x]);
         $w += mb_strlen($pedaco[$x]);
@@ -37,7 +37,7 @@ class Resolucao implements TextWrapInterface {
       else {
         $width = mb_strlen($pedaco[$x]) / $length;
         $count = 0;
-        // Loop pela palavra que é maior que o limite
+        // Loop pela palavra que é maior que o limite.
         // Continuamente cortará a palavra até o fim da mesma,
         // sempre respeitando o limite.
         while ($count < $width) {
@@ -52,14 +52,16 @@ class Resolucao implements TextWrapInterface {
     // na mesma posição.
     for ($i = 0; $i < count($result); $i++) {
       $lengthcounter += mb_strlen($result[$i]);
-      // Caso se encaixem, adiciona um espaço entre elas e
-      // colocam-as na mesma posição.
+      // Caso as palavras menores que o limite,
+      // ao se concatenarem adicionando um espaço, 
+      // continuem menores que o limite, são colocadas
+      // na mesma posição.
       if ($lengthcounter <= $length) {
         $save_word = trim($save_word . " " . $result[$i]);
         $lengthcounter++;
       }
-      // Caso não se encaixem na mesma posição,
-      // adicionam-as à array separadamente.
+      // Caso elas se tornem maior que o limite ao
+      // serem concatenadas, então não ocorre mudança.
       else {
         array_push($final_result, trim($save_word));
         $i--;
