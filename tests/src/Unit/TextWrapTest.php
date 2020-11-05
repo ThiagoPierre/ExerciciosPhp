@@ -18,7 +18,7 @@ class TextWrapTest extends TestCase {
   public function setUp() {
     $this->resolucao = new Resolucao();
     $this->baseString = "Se vi mais longe foi por estar de pé sobre ombros de gigantes";
-    $this->newString = "Pneumoultramicroscopicossilicovulcanoconiótico";
+    $this->newString = "otorrinolaringologista";
   }
 
   /**
@@ -73,15 +73,15 @@ class TextWrapTest extends TestCase {
    *@covers Galoa\ExerciciosPhp\TextWrap\Resolucao::textWrap
    */
   public function testForBigWords() {
-    $ret = $this->resolucao->textWrap($this->newString, 6);
-    $this->assertEquals("Pneumo", $ret[0]);
-    $this->assertEquals("ultram", $ret[1]);
-    $this->assertEquals("icrosc", $ret[2]);
-    $this->assertEquals("opicos", $ret[3]);
-    $this->assertEquals("silico", $ret[4]);
-    $this->assertEquals("vulcan", $ret[5]);
-    $this->assertEquals("oconió", $ret[6]);
-    $this->assertEquals("ticos", $ret[7]);
+    $ret = $this->resolucao->textWrap($this->newString, 3);
+    $this->assertEquals("oto", $ret[0]);
+    $this->assertEquals("rri", $ret[1]);
+    $this->assertEquals("nol", $ret[2]);
+    $this->assertEquals("ari", $ret[3]);
+    $this->assertEquals("ngo", $ret[4]);
+    $this->assertEquals("log", $ret[5]);
+    $this->assertEquals("ist", $ret[6]);
+    $this->assertEquals("a", $ret[7]);
     $this->assertCount(8, $ret);
   }
   
