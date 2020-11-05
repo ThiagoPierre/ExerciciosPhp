@@ -18,6 +18,7 @@ class TextWrapTest extends TestCase {
   public function setUp() {
     $this->resolucao = new Resolucao();
     $this->baseString = "Se vi mais longe foi por estar de pé sobre ombros de gigantes";
+    $this->newString = "pneumoultramicroscopicossilicovulcanoconiótico"
   }
 
   /**
@@ -65,5 +66,23 @@ class TextWrapTest extends TestCase {
     $this->assertEquals("gigantes", $ret[5]);
     $this->assertCount(6, $ret);
   }
-
+  
+  /**
+   * Testa a quebra de palavras para palavras grandes.
+   *
+   *@covers Galoa\ExerciciosPhp\TextWrap\Resolucao::textWrap
+   */
+  public function testForBigWords() {
+    $ret = $this->resolucao->textWrap($this->newString, 6);
+    $this->assertEquals("Pneumo", $ret[0]);
+    $this->assertEquals("ultram", $ret[1]);
+    $this->assertEquals("icrosc", $ret[2]);
+    $this->assertEquals("opicos", $ret[3]);
+    $this->assertEquals("silico", $ret[4]);
+    $this->assertEquals("vulcan", $ret[5]);
+    $this->assertEquals("oconió", $ret[6]);
+    $this->assertEquals("ticos", $ret[7]);
+    $this->assertCount(8, $ret);
+  }
+  
 }
