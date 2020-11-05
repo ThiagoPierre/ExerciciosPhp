@@ -17,6 +17,7 @@ interface TextWrapInterface {
    * @return array
    *   Retorna uma array com o texto separado por limite de caracteres.
    */
+  
   public function textWrap(string $text, int $length): array;
 
 }
