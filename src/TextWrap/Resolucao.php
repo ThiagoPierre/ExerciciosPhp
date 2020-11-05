@@ -28,7 +28,7 @@ class Resolucao implements TextWrapInterface
         for ($i = 0; $i < sizeof($result); $i++) {
             $c += strlen($result[$i]);
             if ($c <= $length) {
-                $a .= $result[$i] . " ";
+                $a .= " " . $result[$i];
                 $c++;
             } else {
                 array_push($final_result, trim($a));
